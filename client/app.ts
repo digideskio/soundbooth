@@ -16,8 +16,12 @@ import { AccountsUI } from 'meteor-accounts-ui';
   directives: [TrackQueue, TrackSearch, AudioPlayer, Chat, AccountsUI]
 })
 class App {
+  loggedIn: boolean;
+
   constructor() {
-    // Meteor.loginWithSoundcloud();
+    Tracker.autorun(zone.bind(() => {
+      this.loggedIn = Meteor.user() !== null;
+    }));
   }
 }
 

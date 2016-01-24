@@ -9,7 +9,11 @@
   </div>
 </div>
 
-<div class="row">
+<div class="loginNotice" *ngIf="!loggedIn">
+  <p class="loginNotice_text">Log in with SoundCloud to get started.</p>
+</div>
+
+<div class="row" *ngIf="loggedIn">
   <div class="medium-4 columns">
     <track-search></track-search>
   </div>

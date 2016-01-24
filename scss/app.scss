@@ -24,3 +24,14 @@ track-queue {
 .top-bar accounts-ui {
   margin-top: 4px;
 }
+
+.loginNotice {
+  height: calc(100vh - 154px);
+  position: relative;
+
+  &_text {
+    @include absolute-center;
+    color: #666;
+    font-size: 2rem;
+  }
+}
