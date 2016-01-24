@@ -1,11 +1,11 @@
 import { Component } from 'angular2/core';
-import { Messages } from '../../collections/messages';
+import { Rooms } from '../../collections/rooms';
 
 @Component({
   selector: '.chat',
   template: `
     <h2 class="sectionTitle">Chat</h2>
-    <div *ngFor="#message of messages" class="message">
+    <div *ngFor="#message of room.messages" class="message">
       <p class="message_author">{{ message.author }}</p>
       <time class="message_time">{{ message.time | date:'shortTime' }}</time>
       <p class="message_body">{{ message.message }}</p>
@@ -14,24 +14,26 @@ import { Messages } from '../../collections/messages';
   `
 })
 export default class Chat {
-  messages;
+  room;
   chatbox: string;
 
   constructor() {
-    this.messages = {};
+    this.room = {};
 
     Tracker.autorun(zone.bind(() => {
-      this.messages = Messages.find();
+      this.room = Rooms.findOne(1);
     }))
   }
 
   sendMessage() {
-    Messages.insert({
+    let message = {
       message: this.chatbox,
       time: Date.now(),
       author: Meteor.user().profile.name
-    });
+    }
 
-    this.chatbox = '';
+    Meteor.call('postMessage', 1, message, (err, res) => {
+      this.chatbox = '';
+    });
   }
 }

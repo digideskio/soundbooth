@@ -1,5 +1,7 @@
 import { Tracks } from 'collections/tracks';
 import { Messages } from 'collections/messages';
+import { Rooms } from 'collections/rooms';
+import 'lib/methods';
 
 Tracks.allow({
   insert(track: any) {
@@ -16,3 +18,7 @@ Messages.allow({
 Meteor.publish('messages', () => {
   return Messages.find();
 });
+
+Meteor.publish('rooms', () => {
+  return Rooms.find();
+})
