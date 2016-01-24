@@ -8,12 +8,17 @@ import TrackSearch from './components/tracksearch';
 import AudioPlayer from './components/audioplayer';
 import Chat from './components/chat';
 import TrackQueueService from './services/trackqueue';
+import { AccountsUI } from 'meteor-accounts-ui';
 
 @Component({
   selector: 'app',
   templateUrl: 'client/app.html',
-  directives: [TrackQueue, TrackSearch, AudioPlayer, Chat]
+  directives: [TrackQueue, TrackSearch, AudioPlayer, Chat, AccountsUI]
 })
-class App {}
+class App {
+  constructor() {
+    // Meteor.loginWithSoundcloud();
+  }
+}
 
 bootstrap(App, [HTTP_BINDINGS, TrackQueueService]);

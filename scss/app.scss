@@ -6,16 +6,21 @@
 
 @import 'base/typography';
 @import 'components/audio-player';
+@import 'components/chat';
 @import 'components/track';
 @import 'components/track-queue';
 @import 'components/track-search';
 
 body {
-  padding-bottom: 116px;
+  margin-bottom: 116px;
 }
 
 track-search,
 track-queue {
   display: block;
   width: 100%;
+}
+
+.top-bar accounts-ui {
+  margin-top: 4px;
 }

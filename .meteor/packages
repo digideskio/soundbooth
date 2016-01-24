@@ -19,3 +19,6 @@ urigo:angular2-meteor
 seba:minifiers-autoprefixer
 fourseven:scss
 zurb:foundation-sites
+mrt:accounts-soundcloud
+barbatus:ng2-meteor-accounts
+barbatus:ng2-meteor-accounts-ui

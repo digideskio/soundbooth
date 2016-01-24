@@ -6,6 +6,7 @@ import { Messages } from '../../collections/messages';
   template: `
     <h2 class="sectionTitle">Chat</h2>
     <div *ngFor="#message of messages" class="message">
+      <p class="message_author">{{ message.author }}</p>
       <time class="message_time">{{ message.time | date:'shortTime' }}</time>
       <p class="message_body">{{ message.message }}</p>
     </div>
@@ -27,7 +28,8 @@ export default class Chat {
   sendMessage() {
     Messages.insert({
       message: this.chatbox,
-      time: Date.now()
+      time: Date.now(),
+      author: Meteor.user().profile.name
     });
 
     this.chatbox = '';
