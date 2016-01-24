@@ -1,8 +1,8 @@
 /// <reference path="../typings/angular2-meteor.d.ts" />
 
 import { Component } from 'angular2/core';
-import TrackQueueService from './services/trackqueue';
-import { Tracks } from '../collections/tracks';
+import TrackQueueService from '../services/trackqueue';
+import { Tracks } from '../../collections/tracks';
 
 // 144420071
 

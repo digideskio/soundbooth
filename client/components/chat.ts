@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { MeteorComponent } from 'angular2-meteor';
-import { Messages } from '../collections/messages';
+import { Messages } from '../../collections/messages';
 
 @Component({
   selector: '.chat',
@@ -19,12 +19,11 @@ export default class Chat extends MeteorComponent {
 
   constructor() {
     super();
-    this.messages = [];
+    this.messages = {};
 
-    this.subscribe('messages', () => {
-      this.messages = Messages.find().fetch();
-      console.log(this.messages);
-    }, true)
+    Tracker.autorun(zone.bind(() => {
+      this.messages = Messages.find();
+    }))
   }
 
   sendMessage() {

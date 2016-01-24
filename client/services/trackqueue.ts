@@ -7,11 +7,11 @@ export default class TrackQueueService {
   currentTrack;
 
   constructor() {
-    this.tracks = [];
+    this.tracks = {};
     this.currentTrack = null;
 
     Tracker.autorun(zone.bind(() => {
-      this.tracks = Tracks.find().fetch();
+      this.tracks = Tracks.find();
     }))
   }
 

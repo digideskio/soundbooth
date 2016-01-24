@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import TrackQueueService from './services/trackqueue';
+import TrackQueueService from '../services/trackqueue';
 
 @Component({
   selector: '.audioPlayer',

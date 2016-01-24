@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { Http } from 'angular2/http';
-import TrackQueueService from './services/trackqueue';
+import TrackQueueService from '../services/trackqueue';
 
 @Component({
   selector: 'track-search',
