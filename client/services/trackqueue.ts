@@ -12,7 +12,6 @@ export default class TrackQueueService {
 
     Tracker.autorun(zone.bind(() => {
       this.tracks = Tracks.find().fetch();
-      console.log(this.tracks);
     }))
   }
 

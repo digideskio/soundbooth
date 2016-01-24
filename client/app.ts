@@ -6,12 +6,13 @@ import { bootstrap } from 'angular2/platform/browser';
 import TrackQueue from './trackqueue';
 import TrackSearch from './tracksearch';
 import AudioPlayer from './audioplayer';
+import Chat from './chat';
 import TrackQueueService from './services/trackqueue';
 
 @Component({
   selector: 'app',
   templateUrl: 'client/app.html',
-  directives: [TrackQueue, TrackSearch, AudioPlayer]
+  directives: [TrackQueue, TrackSearch, AudioPlayer, Chat]
 })
 class App {}
 
