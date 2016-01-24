@@ -9,7 +9,7 @@ import { Tracks } from '../collections/tracks';
 @Component({
   selector: 'track-queue',
   template: `
-    <h3>Queue</h3>
+    <h2 class="sectionTitle">Queue</h2>
     <ul class="trackList">
       <li *ngFor="#track of tracks">
         {{ track.title }}

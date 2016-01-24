@@ -6,11 +6,12 @@ import TrackQueueService from './services/trackqueue';
   selector: 'track-search',
   template: `
     <div class="trackSearch">
-      <input type="search" #searchField (keyup.enter)="search(searchField.value)">
-      <ul *ngFor="#result of results">
-        <li (click)="queueTrack(result)">
-          <strong>{{ result.title }}</strong><br>
-          {{ result.user.username }}
+      <h2 class="sectionTitle">Search</h2>
+      <input class="trackSearch_searchField" type="search" placeholder="Search for a track" #searchField (keyup.enter)="search(searchField.value)">
+      <ul class="trackSearch_results">
+        <li *ngFor="#result of results" (click)="queueTrack(result)" class="trackSearch_results_item">
+          <p class="trackSearch_results_item_title">{{ result.title }}</p>
+          <p class="trackSearch_results_item_artist">{{ result.user.username }}</p>
         </li>
       </ul>
     </div>

@@ -1,0 +1,14 @@
+@charset 'utf-8';
+
+@import '{zurb:foundation-sites}/scss/foundation';
+
+@include foundation-everything(true);
+
+@import 'base/typography';
+@import 'components/track-search';
+
+track-search,
+track-queue {
+  display: block;
+  width: 100%;
+}
