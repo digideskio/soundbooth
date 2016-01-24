@@ -1,8 +1,11 @@
 .message {
-  border-bottom: 1px solid #ccc;
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
   position: relative;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #ccc;
+  }
 
   &_author {
     font-weight: bold;
