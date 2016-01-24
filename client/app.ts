@@ -5,12 +5,13 @@ import { HTTP_BINDINGS } from 'angular2/http';
 import { bootstrap } from 'angular2/platform/browser';
 import TrackQueue from './trackqueue';
 import TrackSearch from './tracksearch';
+import AudioPlayer from './audioplayer';
 import TrackQueueService from './services/trackqueue';
 
 @Component({
   selector: 'app',
   templateUrl: 'client/app.html',
-  directives: [TrackQueue, TrackSearch]
+  directives: [TrackQueue, TrackSearch, AudioPlayer]
 })
 class App {}
 

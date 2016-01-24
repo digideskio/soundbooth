@@ -5,6 +5,8 @@
 @include foundation-everything(true);
 
 @import 'base/typography';
+@import 'components/audio-player';
+@import 'components/track-queue';
 @import 'components/track-search';
 
 track-search,

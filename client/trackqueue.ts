@@ -10,15 +10,17 @@ import { Tracks } from '../collections/tracks';
   selector: 'track-queue',
   template: `
     <h2 class="sectionTitle">Queue</h2>
-    <ul class="trackList">
-      <li *ngFor="#track of tracks">
-        {{ track.title }}
+    <ul class="trackQueue">
+      <li *ngFor="#track of tracks" class="trackQueue_item">
+        <img class="trackQueue_item_image" src="{{ track.artwork_url }}">
+        <p class="trackQueue_item_title">{{ track.title }}</p>
       </li>
     </ul>
   `
 })
 export default class TrackQueue {
   tracks;
+  currentTrackID: number;
 
   constructor() {
     this.tracks = [];
@@ -26,5 +28,9 @@ export default class TrackQueue {
     Tracker.autorun(zone.bind(() => {
       this.tracks = Tracks.find().fetch();
     }))
+  }
+
+  getCurrentTrack(): void {
+    // this.currentTrackID =
   }
 }
