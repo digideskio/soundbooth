@@ -11,9 +11,12 @@ import { Tracks } from '../collections/tracks';
   template: `
     <h2 class="sectionTitle">Queue</h2>
     <ul class="trackQueue">
-      <li *ngFor="#track of tracks" class="trackQueue_item">
-        <img class="trackQueue_item_image" src="{{ track.artwork_url }}">
-        <p class="trackQueue_item_title">{{ track.title }}</p>
+      <li *ngFor="#track of tracks" class="track">
+        <img class="track_image" src="{{ track.artwork_url }}">
+        <div class="track_text">
+          <p class="track_title">{{ track.title }}</p>
+          <p class="track_artist">{{ track.user.username }}</p>
+        </div>
       </li>
     </ul>
   `

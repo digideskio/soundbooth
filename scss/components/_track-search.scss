@@ -1,37 +1,10 @@
 .trackSearch {
   &_searchField {
     width: 100%;
-    margin-bottom: 0rem;
   }
 
   &_results {
     list-style-type: none;
     margin-left: 0;
-    padding: 0.5rem;
-    max-height: 200px;
-    overflow-y: scroll;
-
-    &_item {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #ccc;
-      cursor: pointer;
-
-      &:hover {
-        color: $primary-color;
-      }
-
-      &_title {
-        font-weight: bold;
-      }
-
-      &_artist {
-        font-size: 0.8em;
-        margin-bottom: 0;
-      }
-
-      &_title {
-        margin-bottom: 0;
-      }
-    }
   }
 }

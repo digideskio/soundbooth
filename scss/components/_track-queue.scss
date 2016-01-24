@@ -1,24 +1,4 @@
 .trackQueue {
   list-style-type: none;
   margin-left: 0;
-
-  &_item {
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-
-    &_image {
-      display: inline-block;
-      vertical-align: middle;
-      width: 50px;
-      border: 1px solid #ccc;
-      margin-right: 1rem;
-    }
-
-    &_title {
-      display: inline-block;
-      vertical-align: middle;
-      margin-bottom: 0;
-    }
-  }
 }

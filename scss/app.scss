@@ -6,8 +6,13 @@
 
 @import 'base/typography';
 @import 'components/audio-player';
+@import 'components/track';
 @import 'components/track-queue';
 @import 'components/track-search';
+
+body {
+  padding-bottom: 116px;
+}
 
 track-search,
 track-queue {
