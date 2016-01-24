@@ -10,6 +10,20 @@
     border-color: $primary-color;
   }
 
+  &-active {
+    border-color: $primary-color;
+
+    &::before {
+      @include vertical-center;
+      right: 16px;
+      content: '\f028';
+      font-family: 'FontAwesome';
+      display: block;
+      color: $primary-color;
+      margin-top: 2px; // Makes vertical alignment more accurate
+    }
+  }
+
   &_image {
     position: absolute;
     width: 50px;

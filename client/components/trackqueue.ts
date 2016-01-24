@@ -1,8 +1,7 @@
 /// <reference path="../typings/angular2-meteor.d.ts" />
 
 import { Component } from 'angular2/core';
-import TrackQueueService from '../services/trackqueue';
-import { Tracks } from '../../collections/tracks';
+import { Rooms } from '../../collections/rooms';
 
 // 144420071
 
@@ -11,7 +10,7 @@ import { Tracks } from '../../collections/tracks';
   template: `
     <h2 class="sectionTitle">Queue</h2>
     <ul class="trackQueue">
-      <li *ngFor="#track of tracks" class="track">
+      <li *ngFor="#track of tracks" class="track" [class.track-active]="track.id === activeTrack.id" (click)="setCurrentTrack(track)">
         <img class="track_image" src="{{ track.artwork_url }}">
         <div class="track_text">
           <p class="track_title">{{ track.title }}</p>
@@ -23,17 +22,19 @@ import { Tracks } from '../../collections/tracks';
 })
 export default class TrackQueue {
   tracks;
-  currentTrackID: number;
 
   constructor() {
     this.tracks = [];
 
     Tracker.autorun(zone.bind(() => {
-      this.tracks = Tracks.find().fetch();
+      let room = Rooms.findOne(1);
+      this.tracks = room.tracks;
+      this.activeTrack = room.activeTrack;
     }))
   }
 
-  getCurrentTrack(): void {
-    // this.currentTrackID =
+  setCurrentTrack(track): void {
+    Meteor.call('setCurrentTrack', 1, track, (err, res) => {
+    });
   }
 }

@@ -1,6 +1,5 @@
 import { Component } from 'angular2/core';
 import { Http } from 'angular2/http';
-import TrackQueueService from '../services/trackqueue';
 
 @Component({
   selector: 'track-search',
@@ -23,7 +22,7 @@ import TrackQueueService from '../services/trackqueue';
 export default class TrackSearch {
   results;
 
-  constructor(private http: Http, private queue: TrackQueueService) {}
+  constructor(private http: Http) {}
 
   search(value: string): void {
     this.http.get(`https://api.soundcloud.com/tracks?q=${value}&client_id=${Meteor.settings.public.soundcloudID}`)
@@ -33,6 +32,6 @@ export default class TrackSearch {
   }
 
   queueTrack(track): void {
-    this.queue.addTrack(track);
+    Meteor.call('queueTrack', 1, track, () => {});
   }
 }
