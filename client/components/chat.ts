@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-import { MeteorComponent } from 'angular2-meteor';
 import { Messages } from '../../collections/messages';
 
 @Component({
@@ -13,12 +12,11 @@ import { Messages } from '../../collections/messages';
     <textarea (keyup.enter)="sendMessage()" [(ngModel)]="chatbox" class="chat_messageBox"></textarea>
   `
 })
-export default class Chat extends MeteorComponent {
+export default class Chat {
   messages;
   chatbox: string;
 
   constructor() {
-    super();
     this.messages = {};
 
     Tracker.autorun(zone.bind(() => {
