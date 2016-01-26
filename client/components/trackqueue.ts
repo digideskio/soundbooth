@@ -10,7 +10,7 @@ import { Rooms } from '../../collections/rooms';
   template: `
     <h2 class="sectionTitle">Queue</h2>
     <ul class="trackQueue">
-      <li *ngFor="#track of tracks" class="track" [class.track-active]="track.id === activeTrack.id" (click)="setCurrentTrack(track)">
+      <li *ngFor="#track of tracks" class="track" [class.track-active]="activeTrack && track.id === activeTrack.id" (click)="setCurrentTrack(track)">
         <img class="track_image" src="{{ track.artwork_url }}">
         <div class="track_text">
           <p class="track_title">{{ track.title }}</p>
@@ -22,6 +22,7 @@ import { Rooms } from '../../collections/rooms';
 })
 export default class TrackQueue {
   tracks;
+  activeTrack;
 
   constructor() {
     this.tracks = [];
@@ -34,7 +35,6 @@ export default class TrackQueue {
   }
 
   setCurrentTrack(track): void {
-    Meteor.call('setCurrentTrack', 1, track, (err, res) => {
-    });
+    Meteor.call('setCurrentTrack', 1, track, (err, res) => {});
   }
 }

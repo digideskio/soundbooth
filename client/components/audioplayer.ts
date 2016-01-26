@@ -33,7 +33,7 @@ export default class AudioPlayer implements AfterViewInit {
 
     Tracker.autorun(zone.bind(() => {
       let room = Rooms.findOne(1);
-      this.track = room.activeTrack || null;
+      this.track = room.activeTrack;
     }))
   }
 
