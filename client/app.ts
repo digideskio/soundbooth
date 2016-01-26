@@ -9,6 +9,7 @@ import AudioPlayer from './components/audioplayer';
 import Chat from './components/chat';
 import TrackQueueService from './services/trackqueue';
 import { AccountsUI } from 'meteor-accounts-ui';
+import { Rooms } from '../collections/rooms';
 
 @Component({
   selector: 'app',
@@ -17,11 +18,20 @@ import { AccountsUI } from 'meteor-accounts-ui';
 })
 class App {
   loggedIn: boolean;
+  roomModalOpen: boolean;
+  room;
 
   constructor() {
+    this.roomModalOpen = false;
+
     Tracker.autorun(zone.bind(() => {
       this.loggedIn = Meteor.user() !== null;
+      this.room = Rooms.findOne(1);
     }));
+  }
+
+  toggleRoomModal() {
+    this.roomModalOpen = !this.roomModalOpen;
   }
 }
 
