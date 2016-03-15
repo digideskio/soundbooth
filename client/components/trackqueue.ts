@@ -1,7 +1,7 @@
 /// <reference path="../typings/angular2-meteor.d.ts" />
 
 import { Component } from 'angular2/core';
-import { Rooms } from '../../collections/rooms';
+import RoomService from '../services/room';
 
 // 144420071
 
@@ -24,11 +24,11 @@ export default class TrackQueue {
   tracks;
   activeTrack;
 
-  constructor() {
+  constructor(private roomSvc: RoomService) {
     this.tracks = [];
 
     Tracker.autorun(zone.bind(() => {
-      let room = Rooms.findOne(1);
+      let room = this.roomSvc.room;
       this.tracks = room.tracks;
       this.activeTrack = room.activeTrack;
     }))

@@ -1,0 +1,103 @@
+$slider-height: 0.5rem !default;
+$slider-background: $light-gray !default;
+$slider-fill-background: $medium-gray !default;
+$slider-handle-height: 1.4rem !default;
+$slider-handle-width: 1.4rem !default;
+$slider-handle-background: $primary-color !default;
+$slider-opacity-disabled: 0.25 !default;
+$slider-radius: $global-radius !default;
+
+input[type="range"] {
+  $margin: ($slider-thumb-height - $slider-height) / 2;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  margin-top: $margin;
+  margin-bottom: $margin;
+  border: 0;
+  line-height: 1;
+  margin-bottom: $global-margin;
+
+  @if has-value($slider-radius) {
+    border-radius: $slider-radius;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &[disabled] {
+    opacity: $slider-opacity-disabled;
+  }
+
+  // Chrome/Safari
+  &::-webkit-slider-runnable-track {
+    height: $slider-height;
+    background: $slider-background;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: $slider-thumb-color;
+    width: $slider-thumb-width;
+    height: $slider-thumb-height;
+    margin-top: -$margin;
+
+    @if has-value($slider-radius) {
+      border-radius: $slider-radius;
+    }
+  }
+
+  // Firefox
+  &::-moz-range-track {
+    -moz-appearance: none;
+    height: $slider-height;
+    background: #ccc;
+  }
+
+  &::-moz-range-thumb {
+    -moz-appearance: none;
+    background: $slider-thumb-color;
+    width: $slider-thumb-width;
+    height: $slider-thumb-height;
+    margin-top: -$margin;
+
+    @if has-value($slider-radius) {
+      border-radius: $slider-radius;
+    }
+  }
+
+  // Internet Explorer
+  &::-ms-track {
+    height: $slider-height;
+    background: $slider-background;
+    color: transparent;
+    border: 0;
+    overflow: visible;
+    border-top: $margin solid $body-background;
+    border-bottom: $margin solid $body-background;
+  }
+
+  &::-ms-thumb {
+    background: $slider-thumb-color;
+    width: $slider-thumb-width;
+    height: $slider-thumb-height;
+    border: 0;
+
+    @if has-value($slider-radius) {
+      border-radius: $slider-radius;
+    }
+  }
+
+  &::-ms-fill-lower {
+    background: $slider-fill-background;
+  }
+
+  &::-ms-fill-upper {
+    background: $slider-background;
+  }
+}

@@ -10,6 +10,7 @@ import Chat from './components/chat';
 import TrackQueueService from './services/trackqueue';
 import { AccountsUI } from 'meteor-accounts-ui';
 import { Rooms } from '../collections/rooms';
+import RoomService from './services/room';
 
 @Component({
   selector: 'app',
@@ -21,18 +22,30 @@ class App {
   roomModalOpen: boolean;
   room;
 
-  constructor() {
+  constructor(private roomSvc: RoomService) {
     this.roomModalOpen = false;
 
     Tracker.autorun(zone.bind(() => {
       this.loggedIn = Meteor.user() !== null;
-      this.room = Rooms.findOne(1);
+      this.room = this.roomSvc.room;
     }));
   }
 
   toggleRoomModal() {
     this.roomModalOpen = !this.roomModalOpen;
   }
+
+  createRoom() {
+    this.roomSvc.createRoom('2');
+    this.joinRoom('2');
+
+    console.log(this.room);
+  }
+
+  joinRoom(roomID: string): void {
+    this.roomSvc.changeRoom(roomID);
+    this.room = this.roomSvc.room;
+  }
 }
 
-bootstrap(App, [HTTP_BINDINGS, TrackQueueService]);
+bootstrap(App, [HTTP_BINDINGS, TrackQueueService, RoomService]);

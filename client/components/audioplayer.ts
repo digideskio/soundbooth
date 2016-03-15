@@ -1,7 +1,7 @@
 import { Component, ElementRef, AfterViewInit } from 'angular2/core';
 import { ngStyle } from 'angular2/common';
 import TrackQueueService from '../services/trackqueue';
-import { Rooms } from '../../collections/rooms';
+import RoomService from '../services/room';
 
 declare var $;
 
@@ -27,12 +27,12 @@ export default class AudioPlayer implements AfterViewInit {
   player;
   track;
 
-  constructor(private elem: ElementRef) {
+  constructor(private elem: ElementRef, private roomSvc: RoomService) {
     this.clientID = Meteor.settings.public.soundcloudID;
     this.progressBarStyle = 'scaleX(0)';
 
     Tracker.autorun(zone.bind(() => {
-      let room = Rooms.findOne(1);
+      let room = this.roomSvc.room;
       this.track = room.activeTrack;
     }))
   }

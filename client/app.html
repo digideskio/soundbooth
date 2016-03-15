@@ -2,8 +2,9 @@
   <div class="top-bar-left">
     <ul class="menu">
       <li class="menu-text top-bar-logo">Soundbooth</li>
-      <li class="menu-text"><strong>Room ID:</strong> {{ room._id }}</li>
+      <li class="menu-text" *ngIf="room"><strong>Room ID:</strong> {{ room._id }}</li>
       <li><a (click)="toggleRoomModal()">Change Rooms</a></li>
+      <li><a (click)="createRoom()">Create Room</a></li>
     </ul>
   </div>
   <div class="top-bar-right">
@@ -15,12 +16,12 @@
   <p class="loginNotice_text">Log in with SoundCloud to get started.</p>
 </div>
 
-<div class="joinRoom" [hidden]="roomModalOpen">
-  <button class="close-button" type="button" (click)="toggleRoomModal()">&times;</button>
+<div class="joinRoom" [hidden]="!loggedIn || (room && !roomModalOpen)">
+  <button class="close-button" type="button" *ngIf="room" (click)="toggleRoomModal()">&times;</button>
   <input type="text" class="joinRoom_field" placeholder="Enter a room ID" #joinRoomField (keyup.enter)="joinRoom(joinRoomField.value)">
 </div>
 
-<div class="row" *ngIf="loggedIn">
+<div class="row" *ngIf="loggedIn && room">
   <div class="medium-4 columns">
     <track-search></track-search>
   </div>
@@ -34,4 +35,4 @@
   </div>
 </div>
 
-<div class="audioPlayer"></div>
+<div class="audioPlayer" *ngIf="loggedIn && room"></div>

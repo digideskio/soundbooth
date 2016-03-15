@@ -7,7 +7,7 @@
   animation-name: fadeIn;
   animation-duration: 0.25s;
   background: white;
-  height: calc(100vh - 154px);
+  height: calc(100vh - 54px);
   position: relative;
 
   &_field {
@@ -41,6 +41,10 @@
 
     &:hover {
       color: #999;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }

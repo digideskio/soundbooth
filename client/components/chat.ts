@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core';
-import { Rooms } from '../../collections/rooms';
+import { Rooms } from '../../collections/room';
+import RoomService from '../services/room';
 
 @Component({
   selector: '.chat',
@@ -18,11 +19,11 @@ export default class Chat {
   room;
   chatbox: string;
 
-  constructor() {
+  constructor(private roomSvc: RoomService) {
     this.room = {};
 
     Tracker.autorun(zone.bind(() => {
-      this.room = Rooms.findOne(1);
+      this.room = Rooms.findOne(this.roomSvc.);
     }))
   }
 
