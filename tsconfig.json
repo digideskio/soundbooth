@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "system",
+    "target": "es3",
+    "moduleResolution": "classic",
+    "emitDecoratorMetadata": true,
+    "sourceMap": true
+  }
+}
